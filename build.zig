@@ -8,8 +8,8 @@ pub fn build(b: *std.Build) void {
     });
 
     obj.linkLibC();
-    obj.addCSourceFile(.{ .file = .{ .path = "src/parser.c" }, .flags = &.{} });
-    obj.addIncludePath(.{ .path = "src" });
+    obj.addCSourceFile(.{ .file = b.path("src/parser.c"), .flags = &.{} });
+    obj.addIncludePath(b.path("src"));
 
     b.installArtifact(obj);
 }
